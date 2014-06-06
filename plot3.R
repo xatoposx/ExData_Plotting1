@@ -2,7 +2,12 @@
 #### Plot Energy sub metering vs Time ####
 # -------------------------------------- #
 
-# FOR PEERS!!! See file 'reproduce.R' to create the tidy subset
+#-
+# FOR PEERS!!! 
+# See file 'reproduce.R' to create the tidy subset
+# Repeating the code in all plot*.R files would be 
+# a really bad and discouraged practice.
+#-
 
 # -------------------------------------- #
 # Assume: 
@@ -12,7 +17,14 @@
 # [4] "Global_reactive_power" "Voltage"        "Global_intensity"     
 # [7] "Sub_metering_1"        "Sub_metering_2" "Sub_metering_3"
 # -------------------------------------- #
+# Source raw->tidy work
 source("reproduce.R")
+
+# Layout
+# Transparent background might be incorrectly rendered 
+# by some apps (see ?png)
+# We must set it at global level to make effect later on. 
+par(bg="white")
 
 # Plot
 # Main plot
@@ -35,10 +47,11 @@ leg_txt <- grep("Sub_", names(DFs), value=TRUE)
 # Set legend
 legend("topright", legend=leg_txt, 
        col=c("black", "red", "blue"), 
-       lty=1)
+       lty=1,
+       cex=0.8)
 
 # Save to png (480px x 480px produced by default)
-dev.copy(png, file="plot3.png")
+dev.copy(png, file="plot3.png", pointsize=10)
 dev.off()
 
 # ------------ END OF FILE ------------- #
