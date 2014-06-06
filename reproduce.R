@@ -3,6 +3,12 @@
 # -----------------------------------------------------------#
 
 #### Download and Decompress ------------------------------- # 
+#-
+## FOR PEERS !!! Please, uncomment all in this section to
+## reproduce the entire process, downloading and decompressing
+## upstream archive included. 
+## Commented out here for your convenience.
+#-
 # Download raw data
 #message("Downloading raw dataset...")
 #download.file("https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip", dest="HPC.zip", method="curl")
