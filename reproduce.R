@@ -10,6 +10,14 @@ zip_fname <- "HPC.zip"
 #download.file("https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip", dest=zip_finame, method="curl")
 
 #### Filter ------------------------------------------------ #
+#-
+# For PEERS!!! 
+# The rationale behind this approach is to use connections for doing
+# all the work. This way we save memory and disk space. We read and
+# filter the file within the archive over a connection (without 
+# decompressing to disk!) and results are redirected to another 
+# connection, that is then read into a data.frame. All with base R.
+#-
 # Get name of the raw data file within the archive
 raw_file <- unzip(zip_fname, list=TRUE)$Name
 
