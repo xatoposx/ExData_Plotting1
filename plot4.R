@@ -25,6 +25,9 @@
 # Source raw->tidy work
 source("reproduce.R")
 
+# Open png device (480px x 480px produced by default)
+png(file="plot4.png")
+
 # Layout
 # Transparent background might be incorrectly rendered 
 # by some apps (see ?png)
@@ -59,16 +62,14 @@ leg_txt <- grep("Sub_", names(DFs), value=TRUE)
 legend("topright", legend=leg_txt, 
        col=c("black", "red", "blue"), 
        lty=1, 
-       bty="n",
-       cex=0.8)
+       bty="n")
 
 # Plot 4
 with(DFs, plot(Time, Global_reactive_power, 
 	       type="l", 
 	       xlab="datetime"))
 
-# Save to png (480px x 480px produced by default)
-dev.copy(png, file="plot4.png", pointsize=10)
+# Close png device 
 dev.off()
 
 # ------------ END OF FILE ------------- #

@@ -20,6 +20,9 @@
 # Source raw->tidy work
 source("reproduce.R")
 
+# Open png device (480px x 480px produced by default)
+png(file="plot2.png")
+
 # Layout
 # Transparent background might be incorrectly rendered 
 # by some apps (see ?png)
@@ -32,8 +35,7 @@ with(DFs, plot(Time, Global_active_power,
 	       xlab="", 
 	       ylab="Global Active Power (kilowatts)"))
 
-# Save to png (480px x 480px produced by default)
-dev.copy(png, file="plot2.png", pointsize=10)
+# Close png device 
 dev.off()
 
 # ------------ END OF FILE ------------- #

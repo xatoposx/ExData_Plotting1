@@ -20,6 +20,9 @@
 # Source raw->tidy work
 source("reproduce.R")
 
+# Open png device (480px x 480px produced by default)
+png(file="plot1.png")
+
 # Layout
 # Transparent background might be incorrectly rendered 
 # by some apps (see ?png)
@@ -32,8 +35,7 @@ hist(DFs$Global_active_power,
      main="Global Active Power", 
      xlab="Global Active Power (kilowatts)")
 
-# Save to png (480px x 480px produced by default)
-dev.copy(png, file="plot1.png", pointsize=10)
+# Close png device 
 dev.off()
 
 # ------------ END OF FILE ------------- #
