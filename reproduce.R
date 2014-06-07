@@ -2,34 +2,34 @@
 # Get tidy set from raw data for dates 1/2/2007 and 2/2/2007 #
 # -----------------------------------------------------------#
 
-#### Download and Decompress ------------------------------- # 
-#-
-## FOR PEERS !!! Please, uncomment all in this section to
-## reproduce the entire process, downloading and decompressing
-## upstream archive included. 
-## Commented out here for your convenience.
-#-
+#### Download ---------------------------------------------- #
 # Download raw data
+# (Uncomment this if you want to downloand the archive yourself)
+zip_fname <- "HPC.zip"
 #message("Downloading raw dataset...")
-#download.file("https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip", dest="HPC.zip", method="curl")
+#download.file("https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip", dest=zip_finame, method="curl")
 
-# List files in the archive and obtain info about their size 
-#unzip("HPC.zip", list=TRUE)
+#### Filter ------------------------------------------------ #
+# Get name of the raw data file within the archive
+raw_file <- unzip(zip_fname, list=TRUE)$Name
 
-# Unzip
-#message("Decompressing...")
-#unzip("HPC.zip")
-# ---------------------------------------------------------- #
+# Open a temporary file connection for collecting output of filtering
+filtered <- file()
 
-#### Tidy subset ------------------------------------------- # 
-# Load data into a data.frame (about 127M, is not so big even with base R)
-message("Loading data...")
-DF <- read.table("household_power_consumption.txt", 
-		 header=TRUE, sep=";", na.strings="?", colClasses="character")
+# Open a connection for reading the target file in the archive without decompressing
+zz <- unz(zip_fname, raw_file)
 
-# Subset for dates of interest
-DFs <- DF[DF$Date == "1/2/2007" | DF$Date == "2/2/2007", ]
+# Filter observations for target dates
+message("Filtering raw data...")
+cat(grep("(Date)|(^[1|2]/2/2007)", readLines(zz), value=TRUE), sep="\n", file=filtered)
 
+# Load filtered data into a data.frame 
+DFs <- read.table(filtered, header=TRUE, sep=";", na.strings="?", colClasses="character")
+
+# Close connections
+close(filtered) ; close(zz)
+
+#### Tidy up ----------------------------------------------- # 
 # Transform $Time to be a datetime variable
 DFs <- transform(DFs, Time=paste(Date, Time), stringsAsFactors=FALSE)
 
