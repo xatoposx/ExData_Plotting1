@@ -68,7 +68,7 @@ The four plots are the following [side by side plots of the provided examples ve
 | STAFF'S PLOT                                                  | MY PLOT              |
 |:-------------------------------------------------------------:|:--------------------:|
 | ![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png)  | ![plot1](plot1.png)  |
-| ![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png)  | ![plot1](plot2.png)  |
-| ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png)  | ![plot1](plot3.png)  |
-| ![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png)  | ![plot1](plot4.png)  |
+| ![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png)  | ![plot2](plot2.png)  |
+| ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png)  | ![plot3](plot3.png)  |
+| ![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png)  | ![plot4](plot4.png)  |
 
