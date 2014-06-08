@@ -4,10 +4,11 @@
 
 #### Download ---------------------------------------------- #
 # Download raw data
+data_url  <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
 zip_fname <- "HPC.zip"
+
 message("Downloading raw dataset...")
-download.file("https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip", 
-	      dest=zip_fname, method="curl")
+download.file(data_url, dest=zip_fname, method="curl")
 
 #### Filter ------------------------------------------------ #
 #-
